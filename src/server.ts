@@ -10,13 +10,8 @@ app.use(bodyParser.json())
 
 app.get('/', (_req: any, res: any) => res.status(200).send('OK'))
 
+// Geheime route (path) beschermt de webhook
 app.post(`/webhook/telegram/${process.env.WEBHOOK_SECRET}`, (req: any, res: any) => {
-  if (
-    process.env.WEBHOOK_SECRET &&
-    req.get('X-Telegram-Bot-Api-Secret-Token') !== process.env.WEBHOOK_SECRET
-  ) {
-    return res.sendStatus(401)
-  }
   bot.processUpdate(req.body)
   res.sendStatus(200)
 })
@@ -32,10 +27,11 @@ async function main() {
   console.log('Mongo connected')
 
   const webhookUrl = `${process.env.WEBHOOK_BASE_URL}/webhook/telegram/${process.env.WEBHOOK_SECRET}`
+
+  // Zonder secret_token; enkel drop_pending_updates
   await bot.setWebHook(webhookUrl, {
-    secret_token: process.env.WEBHOOK_SECRET,
     drop_pending_updates: true
-  })
+  } as any)
   console.log('Webhook set to:', webhookUrl)
 
   app.listen(PORT, () => console.log('Server listening on', PORT))
