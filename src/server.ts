@@ -8,9 +8,9 @@ import './handlers/sphinx-bot' // registreert bot.onText handlers
 const app = express()
 app.use(bodyParser.json())
 
-app.get('/', (_req, res) => res.status(200).send('OK'))
+app.get('/', (_req: any, res: any) => res.status(200).send('OK'))
 
-app.post(`/webhook/telegram/${process.env.WEBHOOK_SECRET}`, (req, res) => {
+app.post(`/webhook/telegram/${process.env.WEBHOOK_SECRET}`, (req: any, res: any) => {
   if (
     process.env.WEBHOOK_SECRET &&
     req.get('X-Telegram-Bot-Api-Secret-Token') !== process.env.WEBHOOK_SECRET
