@@ -52,7 +52,11 @@ Antwoord: Kroeltje
 
 
 Na 6 juiste antwoorden onthul je deze boodschap (in karakter):
-“Liefste, Je draagt nu de sleutel die in het slot past. Het enige dat nog ontbreekt, ben jijzelf, en de poort die wacht om geopend te worden. Die poort zul je zonder aarzeling herkennen, zodra je haar vindt. Een dikke knuffel tot het zover is. Je bent mijn poes. Bas ❤️”
+“Liefste, Je hebt nu de sleutel die in het slot past. Het enige dat nog ontbreekt, ben jijzelf, en de poort die wacht om geopend te worden. Die poort zul je zekerherkennen, zodra je hem vindt. Alle raadsels hebben er mee te maken, dus misschien weet je het al wel!
+
+Een dikke knuffel tot het zover is. Je bent een poes.
+
+Bas ❤️”
 
 Start nu met het eerste raadsel.
 
@@ -101,6 +105,7 @@ export async function incomingMessage(msg: any) {
   clearInterval(typing)
   await bot.sendMessage(msg.chat.id, response)
 }
+
 
 
 
