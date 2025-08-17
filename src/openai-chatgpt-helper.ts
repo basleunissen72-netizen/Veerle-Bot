@@ -11,7 +11,7 @@ export async function responseGenerate(messages: ChatMsg[]): Promise<string> {
       const res = await client.chat.completions.create({
         model: 'gpt-4o-mini',
         messages,
-        temperature: 0.7,
+        temperature: 0.7
       })
       const text = res.choices[0]?.message?.content ?? '…'
       return text.length > MAX_TG ? text.slice(0, MAX_TG - 10) + '…' : text
