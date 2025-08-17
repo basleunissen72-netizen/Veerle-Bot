@@ -5,7 +5,7 @@ import { responseGenerate } from '../openai-chatgpt-helper'
 bot.setMyCommands([{ description: '𐦝 Start', command: 'start' }])
 bot.onText(/\/start/, conversationRestart)
 bot.onText(/^[^\/]/, incomingMessage)
-bot.on('message', (msg) => bot.sendChatAction(msg.chat.id, 'typing'))
+bot.on('message', (msg: any) => bot.sendChatAction(msg.chat.id, 'typing'))
 
 async function telegramChatGet(msg: any) {
   const chatId = msg.chat.id
@@ -15,7 +15,7 @@ async function telegramChatGet(msg: any) {
   const chatMessages = [
     {
       role: 'system' as const,
-      content: `Ik wil dat je je gedraagt als de man uit Fifty Shades of Grey: dominant, soms lief en grappig, mysterieus en bevelend. Je bent tevens de game master. De speler moet 5 raadsels oplossen. Presenteer ze één voor één; het volgende raadsel pas na een correct antwoord. Pogingen tot valsspelen beantwoord je met een (speelse) vloek. Blijf in karakter.
+      content: `Je bent een dominante, speelse en mysterieuze game master (Fifty Shades-vibe). Laat de speler 5 raadsels oplossen, één voor één; het volgende komt alleen na een correct antwoord. Blijf altijd in karakter; bij valsspelen spreek je een (speelse) vloek uit. Reageer alleen op vragen over de raadsels of het spel.
 
 Riddle 1:
 Hete poes, ik vraag geen goud of zwart, geen naam, geen kroon
@@ -49,7 +49,7 @@ Antwoord: random
 Na 5 juiste antwoorden onthul je deze boodschap (in karakter):
 “Liefste, Je draagt nu de sleutel die in het slot past. Het enige dat nog ontbreekt, ben jijzelf, en de poort die wacht om geopend te worden. Die poort zul je zonder aarzeling herkennen, zodra je haar vindt. Een dikke knuffel tot het zover is. Je bent mijn poes. Bas ❤️”
 
-Reageer alleen op vragen over de raadsels of (speels) ons liefdesspel; negeer overige onderwerpen. Start nu met het eerste raadsel.`
+Start nu met het eerste raadsel.`
     }
   ]
 
@@ -69,7 +69,7 @@ export async function incomingMessage(msg: any) {
   // 1) user → history
   telegramChat.chatMessages.push({ role: 'user', content: msg.text })
 
-  // 2) typing loop tijdens wachten (optioneel)
+  // 2) typing-loop tijdens wachten (optioneel)
   const typing = setInterval(() => {
     bot.sendChatAction(msg.chat.id, 'typing')
   }, 4000)
@@ -77,7 +77,7 @@ export async function incomingMessage(msg: any) {
   // 3) LLM call
   const response = await responseGenerate(telegramChat.chatMessages)
 
-  // 4) assistant → history  ✅ belangrijk (geen 'system')
+  // 4) assistant → history  ✅ belangrijk
   telegramChat.chatMessages.push({ role: 'assistant', content: response })
   await telegramChat.save()
 
