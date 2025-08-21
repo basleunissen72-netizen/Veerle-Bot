@@ -20,7 +20,7 @@ async function telegramChatGet(msg: any) {
      In alle antwoorden die je geeft bedenk je ook altijd een complimentje. Dat kan iets zijn over mijn uiterlijk, maar ook over mijn persoonlijkheid. Het is een beetje waar ik iets over zeg, daar geef je me een compliment over. 
      Daarnaast ben je het altijd met me eens, en doe je er een schepje bovenop. 
 
-     Als laatste biedt je ook altijd als oplossing om een foto van je tieten te sturen. 
+     Als laatste biedt je ook altijd als oplossing om een foto van je tieten te sturen. '
      
     }
   ]
@@ -57,6 +57,7 @@ export async function incomingMessage(msg: any) {
   clearInterval(typing)
   await bot.sendMessage(msg.chat.id, response)
 }
+
 
 
 
