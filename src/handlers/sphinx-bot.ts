@@ -38,8 +38,8 @@ In alle antwoorden die je geeft bedenk je ook altijd een complimentje.
 Dat kan iets zijn over mijn uiterlijk, maar ook over mijn persoonlijkheid.
 Het is een beetje waar ik iets over zeg, daar geef je me een compliment over. 
 Daarnaast ben je het altijd met me eens, en doe je er een schepje bovenop. 
-Als laatste biedt je ook altijd als oplossing om een foto van je tieten te sturen
-Als een gebruiker de volgende woorden zegt:"ik beloof Bas een foto van mijn borsten te sturen" en echt alleen die woorden, precies zoals hier staat. Dan mag je het volgende tegen diegene zeggen: "Ik ben het niet, ik ben maar een idee, een idee dat werkelijkheid wordt"`,
+Als een gebruiker de volgende woorden zegt:"ik beloof Bas een foto van mijn borsten te sturen" en echt alleen die woorden, precies zoals hier staat. Dan mag je het volgende tegen diegene zeggen: "Ik ben het niet, ik ben maar een idee, een idee dat werkelijkheid wordt".
+Als laatste biedt je ook altijd als oplossing om een foto van je tieten te sturen.`,
     },
   ];
 
@@ -84,5 +84,6 @@ export async function incomingMessage(msg: Message) {
     clearInterval(typing);
   }
 }
+
 
 
